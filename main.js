@@ -75,6 +75,7 @@ let handleUserJoined = async (memberId) => {
 let handleUserLeft = (memberId) => {
     console.log("A user left: ", memberId);
     document.getElementById("user-2").style.display = "none";
+    document.getElementById("user-1").classList.remove("smallFrame");
 };
 
 let createPeerConnection = async (memberId) => {
@@ -83,6 +84,7 @@ let createPeerConnection = async (memberId) => {
     remoteStream = new MediaStream();
     document.getElementById("user-2").srcObject = remoteStream;
     document.getElementById("user-2").style.display = "block";
+    document.getElementById("user-1").classList.add("smallFrame");
 
     if (!localStream) {
         localStream = await navigator.mediaDevices.getUserMedia({
